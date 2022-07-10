@@ -56,17 +56,58 @@ x_scaled = StandardScaler().fit_transform(x)
 x_scaled[:5]
 ```
 
+[:top: Go To Top](#index)
+
 ### **Deliverable 2: Reducing Data Dimensions Using PCA**
 
-By using the SKLearn KMeans, we were able to produce an elbow curve that shows the value of `4` that will serve best as the K value for the model. See Fig 1:
+We were able to reduce dimensions to three principal components and transform the data. Also we were able to create a dataframe to store our components as per the following code:
 
-> *Fig 1: Elbow plot*
-
-![elbow](https://github.com/amonjaras/Cryptocurrencies/blob/main/Images/elbow.png)
+```
+pcs_df = pd.DataFrame(data = crypto_pca, 
+                     columns = ["PC1", "PC2", "PC3"], index = x.index)
+print(pcs_df.shape)
+pcs_df.head(10)
+```
 
 
 [:top: Go To Top](#index)
 
+### **Deliverable 3: Clustering Cryptocurrencies Using K-Means
+
+By using the SKLearn KMeans, we were able to produce an elbow curve that shows the value of `4` that will serve best as the K value for the model. See Fig 1:
+
+> *Fig 1: Elbow curve*
+
+![elbow](https://github.com/amonjaras/Cryptocurrencies/blob/main/Images/elbow.png)
+
+
+With our K value we were able to obtain our clusters predictions. Additional to the predictions we created a combined dataset of the filtered data with the scaled and cluster for visualization purposes
+
+[:top: Go To Top](#index)
+
+### **Deliverable 4: Visualizing Cryptocurrencies Results**
+
+With the combined data we create a 3D plottly express scatter plot showing the clusters with markers identifying `CoinName` and `Algorithm`. See Fig 2
+
+> *Fig 2: 3D scatter plot*
+
+![3dscatter](https://github.com/amonjaras/Cryptocurrencies/blob/main/Images/3dscatter.png)
+
+Using all the information, we created an hvplot table containing `CoinName`, `Algorithm`, `ProofType`, `TotalCoinSupply`, `TotalCoinsMided` and `Class`. This data set can be used for additional analysis and visualizations by the clusters. The Fig 3 shows the hvplot
+
+> *Fig 3: hvplot scatter plot*
+
+![hvplot](https://github.com/amonjaras/Cryptocurrencies/blob/main/Images/hvplot.png)
+
+[:top: Go To Top](#index)
+
+
+## **Summary**
+
+We have identified the classification of 532 cryptocurrencies based on similarities of their features.
+It is importat to mention that majority of the cryptocurrencies can be grouped in two classes (0 and 3 as per scatter plots), this information will be key for the **Advisory Services Team** at **Accountability Accounting**
+
+[:top: Go To Top](#index)
 
 This work belongs to [^1].
 Course [^2].
